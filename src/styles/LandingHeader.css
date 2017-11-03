@@ -1,0 +1,27 @@
+  .Nav-logo {
+    animation: Nav-logo-spin infinite 5s linear;
+    animation-direction: alternate-reverse;  
+    height: 15px;
+    margin: 10px;
+  }
+  
+  .Nav-header {
+    background-color: #222;
+    height: 175px;
+    padding: 20px;
+    color: white;
+  }
+  
+  .Nav-title {
+    font-size: 5em;
+  }
+  
+  .Nav-intro {
+    font-size: large;
+  }
+  
+  @keyframes App-logo-spin {
+    from { transform: scale(1.5); }
+    to { transform: scale(2.8); }
+  }
+  
