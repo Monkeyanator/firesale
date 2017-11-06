@@ -1,13 +1,17 @@
-.id-text {
-    font-size: 20em;
-}
-
 .image-media { 
-    padding: 20px;
-    float: right;
+    padding-left: 40px;
+    float: left;
+    height: 500px;
+    width: 700px;
 }
 
 .bid-button { 
-    height: 40px;
-    width: 200px;
+    height: 45px;
+    width: 300px;
+}
+
+.button-label-group {
+    text-align: center;
+    vertical-align: center;
+    margin: 20px;
 }

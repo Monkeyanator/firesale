@@ -31,8 +31,14 @@ class AuctionRoom extends Component {
                 src={this.state.auctionItem.imageUrl} 
                 caption={this.state.auctionItem.title} 
                 width="550"/>
-            <PriceLabel price={this.state.currentPrice}/>
-            <Button className="bid-button" onClick={() => this.setState({currentPrice: this.state.currentPrice+1})} waves='light'><span className="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></Button>
+            <div className="button-label-group">
+                <PriceLabel price={this.state.currentPrice}/>
+                <Button className="bid-button" 
+                    onClick={() => this.setState({currentPrice: this.state.currentPrice+1})} 
+                    waves='light'><span className="glyphicon glyphicon-arrow-up" 
+                    aria-hidden="true"></span>
+                </Button>
+            </div>
         </span>
     )
   }
