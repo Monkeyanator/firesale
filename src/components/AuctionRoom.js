@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { MediaBox } from 'react-materialize';
+import { MediaBox, Button } from 'react-materialize';
 
 //grab that thicc data
 import AUCTION_DATA from '../services/Api.js';
 
+//custom components
+import PriceLabel from './PriceLabel.js';
+
 //custom styles
 import '../styles/AuctionRoom.css';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class AuctionRoom extends Component {
 
@@ -13,23 +17,23 @@ class AuctionRoom extends Component {
       super(props);
       this.state = {
           auctionItem: AUCTION_DATA.AUCTION_DATA.find((auction) => {
-              console.log(this.props.match.params.auctionId);
-              console.log(auction.auctionId);
               return this.props.match.params.auctionId == auction.auctionId;
-          })
+          }),
+          currentPrice: 0
       }
-      console.log(this.state);
   }
 
   render() {
     return (
-        <div>
+        <span>
             <MediaBox 
                 className="image-media"
                 src={this.state.auctionItem.imageUrl} 
                 caption={this.state.auctionItem.title} 
                 width="550"/>
-        </div>
+            <PriceLabel price={this.state.currentPrice}/>
+            <Button className="bid-button" onClick={() => this.setState({currentPrice: this.state.currentPrice+1})} waves='light'><span className="glyphicon glyphicon-arrow-up" aria-hidden="true"></span></Button>
+        </span>
     )
   }
 

@@ -4,4 +4,10 @@
 
 .image-media { 
     padding: 20px;
+    float: right;
+}
+
+.bid-button { 
+    height: 40px;
+    width: 200px;
 }
