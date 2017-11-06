@@ -19,7 +19,7 @@
   .Nav-intro {
     font-size: large;
   }
-  
+
   @keyframes App-logo-spin {
     from { transform: scale(1.5); }
     to { transform: scale(2.8); }
