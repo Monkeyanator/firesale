@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router'; 
+import { BrowserRouter, Route } from 'react-router'; 
 
 //custom components 
 import LandingHeader from './components/LandingHeader.js';
@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="App">
         <LandingHeader logo="🔥" title="Firesale"/>
-        <AuctionList/>
+        <Route exact path="/" component={AuctionList}/>
       </div>
     );
   }
