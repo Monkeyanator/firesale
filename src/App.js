@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router } from 'react-router'; 
 
 //custom components 
 import LandingHeader from './components/LandingHeader.js';

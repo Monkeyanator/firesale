@@ -22,13 +22,15 @@ class AuctionList extends Component {
   render() {
 
     var auctionData = this.state.auctionItems; 
-    console.log(auctionData); 
     var auctionCards = auctionData.map(function(auctionItem){
         return (
             <Card 
                 className="auction-card"
-                header={<CardTitle reveal image={auctionItem.imageUrl} waves='light'/>}
-                title="Vincent van Gogh">
+                header={
+                    <CardTitle image={ auctionItem.imageUrl } 
+                               waves='light'/>
+                    }
+                title={ auctionItem.title }>
             </Card>
             )
         }); 
