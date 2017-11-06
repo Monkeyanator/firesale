@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 //materialize css 
 import { Card, CardTitle } from 'react-materialize';
 
+//router
+import { Link } from 'react-router-dom'
+
 //api data
 import AUCTION_DATA from '../services/Api';
 
@@ -24,14 +27,16 @@ class AuctionList extends Component {
     var auctionData = this.state.auctionItems; 
     var auctionCards = auctionData.map(function(auctionItem){
         return (
-            <Card 
-                className="auction-card"
-                header={
-                    <CardTitle image={ auctionItem.imageUrl } 
-                               waves='light'/>
-                    }
-                title={ auctionItem.title }>
-            </Card>
+            <Link to={'/auctions/' + auctionItem.auctionId}>
+                <Card 
+                    className="auction-card"
+                    header={
+                        <CardTitle image={ auctionItem.imageUrl } 
+                                waves='light'/>
+                        }
+                    title={ auctionItem.title }>
+                </Card>
+            </Link>
             )
         }); 
 
