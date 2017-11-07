@@ -19,7 +19,7 @@ io.on('connection', (socket) => {
 
     socket.on('increase-price', () => {
         itemPrice++;
-        socket.broadcast.emit('price-increased');
+        socket.broadcast.emit('price-increased', itemPrice);
         console.log("Item price increased to: " + itemPrice);
     })
 }); 

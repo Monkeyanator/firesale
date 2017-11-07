@@ -27,11 +27,12 @@ class AuctionRoom extends Component {
           currentPrice: 0
       }
 
-      subscribeToIncrease((err) => {
+      subscribeToIncrease((itemPrice) => {
+        console.log("Receiving price-increased message");
+        console.log("Value: " + itemPrice);
         this.setState({
-            currentPrice: this.state.currentPrice + 1
+            currentPrice: itemPrice
         });
-        console.log("Increase deteceted.");
       })
 
   }

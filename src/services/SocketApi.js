@@ -5,7 +5,7 @@ const socket = openSocket('http://localhost:8000');
 
 //
 function subscribeToIncrease(callback) {
-    socket.on('price-increased', timestamp => callback(null));
+    socket.on('price-increased', itemPrice => callback(itemPrice));
 }
 
 function increasePrice(){
