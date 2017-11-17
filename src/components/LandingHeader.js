@@ -8,8 +8,7 @@ class LandingHeader extends Component {
     return (
       <div>
         <header className="Nav-header">
-          <h1 className="Nav-logo"><span>{this.props.logo}</span></h1>
-          <h1 className="Nav-title"><span>{this.props.title}</span></h1>
+          <span className="Nav-title"><span>{this.props.title}</span></span>
         </header>
       </div>
     );

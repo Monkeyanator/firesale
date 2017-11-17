@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <LandingHeader logo="🔥" title="Firesale"/>
+        <LandingHeader title="Firesale"/>
         <Route exact path="/" component={AuctionList}/>
         <Route path='/auctions/:auctionId' component={AuctionRoom}/>
       </div>
