@@ -8,7 +8,7 @@ class LandingHeader extends Component {
     return (
       <div>
         <header className="Nav-header">
-          <span className="Nav-title"><span>{this.props.title}</span></span>
+          <span className="Nav-title" onClick={() => window.location = '/'}>{this.props.title}</span>
         </header>
       </div>
     );

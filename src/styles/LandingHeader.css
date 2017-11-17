@@ -1,14 +1,18 @@
 
 .Nav-header {
-    background-color: #222;
-    height: 55px;
-    text-align: left;
+  background-color: #222;
+  height: 55px;
+  text-align: left;
 }
   
-  .Nav-title {
-    font-family: 'Vollkorn SC', serif;    
-    font-size: 3em;
-    font-weight: bold;
-    color: white;
-    margin-left: 40px;
-  }
+.Nav-title {
+  font-family: 'Vollkorn SC', serif;    
+  font-size: 3em;
+  font-weight: bold;
+  color: white;
+  margin-left: 40px;
+}
+
+.Nav-title:hover{ 
+  
+}
