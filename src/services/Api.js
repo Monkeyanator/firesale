@@ -18,7 +18,7 @@ module.exports = {
         },
         {
             imageUrl: "http://lorempixel.com/400/300/nightlife/3",
-            title: "Mona Lisa",
+            title: "Original 1549 Mona Lisa, Pride of Venice, from Leonardo da Vinci",
             bidders: 8,
             link: "https://monkeyanator.github.io/",
             auctionId: 3

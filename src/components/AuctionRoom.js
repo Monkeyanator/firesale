@@ -46,6 +46,7 @@ class AuctionRoom extends Component {
                 caption={this.state.auctionItem.title} 
                 width="550"/>
             <div className="button-label-group">
+                <div className="item-title">{this.state.auctionItem.title}</div>
                 <PriceLabel price={this.state.currentPrice}/>
                 <Button className="bid-button" 
                     onClick={() => {
