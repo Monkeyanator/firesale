@@ -5,3 +5,16 @@
     display: inline-block; 
     float: left; 
 }
+
+.card-title { 
+    text-align: left;
+    font-size: 15px !important;
+    font-family: Arial, Helvetica, sans-serif !important; 
+    font-weight: bolder !important;
+    line-height: 20px !important;
+}
+
+.card-content { 
+    padding-left: 6px !important;
+    padding-top: 5px !important;
+}
