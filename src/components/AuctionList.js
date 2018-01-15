@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 import AUCTION_DATA from '../services/Api';
 
 //custom styles
-import "../styles/AuctionList.css"; 
+import '../styles/AuctionList.css'; 
 
 class AuctionList extends Component {
 

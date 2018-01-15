@@ -4,6 +4,7 @@
     margin: 20px;
     display: inline-block; 
     float: left; 
+    font-family: Arial, Helvetica, sans-serif !important;     
 }
 
 .card-title { 

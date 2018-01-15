@@ -1,3 +1,4 @@
-.App {
+.App , html, body{
   text-align: center;
+  background-color: #e6ecf0;
 }

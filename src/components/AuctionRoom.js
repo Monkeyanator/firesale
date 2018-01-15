@@ -33,20 +33,18 @@ class AuctionRoom extends Component {
         this.setState({
             currentPrice: itemPrice
         });
-      })
+      }) 
 
   }
 
   render() {
     return (
         <span>
-            <MediaBox 
-                className="image-media"
-                src={this.state.auctionItem.imageUrl} 
-                caption={this.state.auctionItem.title} 
-                width="550"/>
-            <div className="button-label-group">
+            <div className="image-and-title"> 
+                <img className="image-media" src={this.state.auctionItem.imageUrl}/>
                 <div className="item-title">{this.state.auctionItem.title}</div>
+            </div>
+            <div className="button-label-group">
                 <PriceLabel price={this.state.currentPrice}/>
                 <Button className="bid-button" 
                     onClick={() => {

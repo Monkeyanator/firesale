@@ -1,9 +1,9 @@
 .image-media { 
-    padding-left: 40px;
-    padding-right: 40px;
+    margin: 20px;
     float: left;
     height: 400px;
     width: 600px;
+    margin-bottom: 20px;
 }
 
 .bid-button { 
@@ -12,13 +12,17 @@
 }
 
 .button-label-group {
+    clear: both;
     text-align: center;
     vertical-align: center;
     margin: 20px;
+    background-color: #D4DFC7; 
+    height: 400px;
 }
 
 .item-title { 
-    font-size: 2em;
+    font-size: 6em;
+    line-height: 1.2em;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
     text-align: left;

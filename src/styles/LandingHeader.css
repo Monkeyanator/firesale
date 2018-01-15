@@ -1,12 +1,13 @@
 
 .Nav-header {
-  background-color: #222;
+  background-color: #725752;
   height: 55px;
   text-align: left;
+  margin-bottom: 20px; 
 }
   
 .Nav-title {
-  font-family: 'Vollkorn SC', serif;    
+  font-family: 'Arial', serif;    
   font-size: 3em;
   font-weight: bold;
   color: white;
