@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { MediaBox, Button } from 'react-materialize';
+import { Button } from 'react-materialize';
 
 //grab that thicc data
 import AUCTION_DATA from '../services/Api.js';
+import { axios } from 'axios';
 
 //socket API setup 
 import { increasePrice, subscribeToIncrease } from '../services/SocketApi.js'; 
