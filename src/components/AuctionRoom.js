@@ -3,7 +3,6 @@ import { Button } from 'react-materialize';
 
 //grab that thicc data
 import AUCTION_DATA from '../services/Api.js';
-import { axios } from 'axios';
 
 //socket API setup 
 import { increasePrice, subscribeToIncrease } from '../services/SocketApi.js'; 
@@ -15,18 +14,41 @@ import PriceLabel from './PriceLabel.js';
 import '../styles/AuctionRoom.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+//should ideally take this completely out
+var axios = require('axios'); 
+
 class AuctionRoom extends Component {
 
   constructor(props){
       super(props);
 
+      var defaultAuction = { imageUrl: "", title: "" }; 
+
       //set initial state
       this.state = {
-          auctionItem: AUCTION_DATA.AUCTION_DATA.find((auction) => {
-              return this.props.match.params.auctionId == auction.auctionId;
-          }),
-          currentPrice: 0
+          auctionItem: defaultAuction,
+          currentPrice: 0,
       }
+
+      //grab reference to this for use inside of callback
+      var self = this;
+      this.getAuctions()
+        .then(function(response){
+            //filter through list for matching IDs -- ideally
+            //this would be passed with the component knowing nothing but we'll
+            //hopefully get there at some point
+            var auctionList = response.data; 
+            var currentAuctionId = self.props.match.params.auctionId;
+
+            var desiredItem = auctionList.find((auction) => {
+                return currentAuctionId == auction._id; 
+            })
+
+            self.setState({
+                auctionItem: desiredItem,
+            })
+
+        });
 
       subscribeToIncrease((itemPrice) => {
         console.log("Receiving price-increased message");
@@ -43,7 +65,7 @@ class AuctionRoom extends Component {
         <span>
             <div className="image-and-title"> 
                 <img className="image-media" src={this.state.auctionItem.imageUrl}/>
-                <div className="item-title">{this.state.auctionItem.title}</div>
+                <div className="item-title">{this.state.auctionItem.itemName}</div>
             </div>
             <div className="button-label-group">
                 <PriceLabel price={this.state.currentPrice}/>
@@ -59,6 +81,11 @@ class AuctionRoom extends Component {
         </span>
     )
   }
+
+    //separate into separate state
+    getAuctions = () => { 
+        return axios.get('http://localhost:8080/api/auctions')
+    }
 
 }
 

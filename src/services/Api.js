@@ -1,6 +1,6 @@
 //test data
 module.exports = { 
-        
+
     AUCTION_DATA: [
         {
             imageUrl: "http://lorempixel.com/400/300/nightlife/1",

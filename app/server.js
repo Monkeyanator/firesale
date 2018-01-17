@@ -42,6 +42,12 @@ var mongoose = require('mongoose');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 var EXPRESS_PORT = process.env.PORT || 8080;
 
 var router = express.Router();
@@ -68,7 +74,7 @@ router.get('/', function(req, res){
     res.json({message: 'It is happening!'});
 });
 
-router.route('/articles')
+router.route('/auctions')
 
     //create an article
     .post(function(req, res){
@@ -105,7 +111,6 @@ router.route('/articles')
         }); 
 
     }); 
-
 
 app.use('/api', router);
 app.listen(EXPRESS_PORT);
