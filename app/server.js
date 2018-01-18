@@ -17,6 +17,10 @@ var itemPrice = 0;
 io.on('connection', (socket) => {
     console.log("Client connected!");
 
+    socket.on('request-price', () => {
+        socket.emit('current-price', itemPrice);
+    }); 
+
     socket.on('disconnect', () => {
         console.log("Client disconnected.");
     });

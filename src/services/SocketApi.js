@@ -12,4 +12,9 @@ function increasePrice(){
     socket.emit('increase-price'); 
 }
 
-export { subscribeToIncrease, increasePrice };
+function requestPrice(callback){
+    socket.emit('request-price');     
+    socket.on('current-price', currentPrice => callback(currentPrice));
+}
+
+export { subscribeToIncrease, increasePrice , requestPrice };

@@ -5,7 +5,7 @@ import { Button } from 'react-materialize';
 import AUCTION_DATA from '../services/Api.js';
 
 //socket API setup 
-import { increasePrice, subscribeToIncrease } from '../services/SocketApi.js'; 
+import { increasePrice, subscribeToIncrease, requestPrice } from '../services/SocketApi.js'; 
 
 //custom components
 import PriceLabel from './PriceLabel.js';
@@ -50,6 +50,13 @@ class AuctionRoom extends Component {
 
         });
 
+      requestPrice((initialPrice) => {
+          console.log("Receiving intial price: " + initialPrice); 
+          this.setState({
+            currentPrice: initialPrice,
+          });
+      });
+
       subscribeToIncrease((itemPrice) => {
         console.log("Receiving price-increased message");
         console.log("Value: " + itemPrice);
@@ -66,6 +73,7 @@ class AuctionRoom extends Component {
             <div className="image-and-title"> 
                 <img className="image-media" src={this.state.auctionItem.imageUrl}/>
                 <div className="item-title">{this.state.auctionItem.itemName}</div>
+                <div className="description-text">{this.state.auctionItem.description}</div>
             </div>
             <div className="button-label-group">
                 <PriceLabel price={this.state.currentPrice}/>

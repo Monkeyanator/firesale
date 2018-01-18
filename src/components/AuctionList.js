@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 //materialize css 
-import { Card, CardTitle } from 'react-materialize';
+import AuctionCard from './AuctionCard.js';
 
 //router
 import { Link } from 'react-router-dom'
@@ -40,14 +40,11 @@ class AuctionList extends Component {
     var auctionCards = auctionData.map(function(auctionItem){
         return (
             <Link to={'/auctions/' + auctionItem._id}>
-                <Card 
-                    className="auction-card"
-                    header={
-                        <CardTitle image={ auctionItem.imageUrl } 
-                                waves='light'/>
-                        }
-                    title={ auctionItem.itemName }>
-                </Card>
+                <AuctionCard
+                    imageUrl= { auctionItem.imageUrl }
+                    auctionTitle= { auctionItem.itemName }
+                    description= { auctionItem.description }>
+                </AuctionCard>
             </Link>
             )
         }); 
