@@ -23,6 +23,7 @@ class AuctionRoom extends Component {
       super(props);
 
       var defaultAuction = { imageUrl: "", title: "" }; 
+      var auctionIdParam = this.props.match.params.auctionId;
 
       //set initial state
       this.state = {
@@ -38,7 +39,7 @@ class AuctionRoom extends Component {
             //this would be passed with the component knowing nothing but we'll
             //hopefully get there at some point
             var auctionList = response.data; 
-            var currentAuctionId = self.props.match.params.auctionId;
+            var currentAuctionId = auctionIdParam;
 
             var desiredItem = auctionList.find((auction) => {
                 return currentAuctionId == auction._id; 
@@ -50,20 +51,21 @@ class AuctionRoom extends Component {
 
         });
 
-      requestPrice((initialPrice) => {
-          console.log("Receiving intial price: " + initialPrice); 
-          this.setState({
-            currentPrice: initialPrice,
-          });
+
+      requestPrice(auctionIdParam, (initialPrice) => {
+        console.log("Receiving intial price: " + initialPrice); 
+        this.setState({
+          currentPrice: initialPrice,
+        });     
       });
 
-      subscribeToIncrease((itemPrice) => {
+      subscribeToIncrease(auctionIdParam, (itemPrice) => {
         console.log("Receiving price-increased message");
         console.log("Value: " + itemPrice);
         this.setState({
             currentPrice: itemPrice
         });
-      }) 
+      }); 
 
   }
 
@@ -80,7 +82,7 @@ class AuctionRoom extends Component {
                 <Button className="bid-button" 
                     onClick={() => {
                         this.setState({currentPrice: this.state.currentPrice+1}); 
-                        increasePrice(); 
+                        increasePrice(this.props.match.params.auctionId); 
                     }} 
                     waves='light'><span className="glyphicon glyphicon-arrow-up" 
                     aria-hidden="true"></span>

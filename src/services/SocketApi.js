@@ -4,16 +4,16 @@ import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:8000');
 
 //
-function subscribeToIncrease(callback) {
+function subscribeToIncrease(auctionId, callback) {
     socket.on('price-increased', itemPrice => callback(itemPrice));
 }
 
-function increasePrice(){
-    socket.emit('increase-price'); 
+function increasePrice(auctionId){
+    socket.emit('increase-price', {'auctionId': auctionId}); 
 }
 
-function requestPrice(callback){
-    socket.emit('request-price');     
+function requestPrice(auctionId, callback){
+    socket.emit('request-price', {'auctionId': auctionId});     
     socket.on('current-price', currentPrice => callback(currentPrice));
 }
 

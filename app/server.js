@@ -11,24 +11,43 @@ io.listen(SOCKET_PORT);
 console.log("Socket server on port: " + SOCKET_PORT);
 
 //server state
+var prices = {};
 var itemPrice = 0;
 
 //handle connection
 io.on('connection', (socket) => {
     console.log("Client connected!");
 
-    socket.on('request-price', () => {
-        socket.emit('current-price', itemPrice);
+    socket.on('request-price', (auctionIdData) => {
+        var auctionId = auctionIdData.auctionId;
+        console.log("Price requested for auction ID: " + auctionId);
+
+        socket.join(auctionId);
+        console.log("Client joined room: " + auctionId);
+
+        if(auctionId in prices){
+            io.to(auctionId).emit('current-price', prices[auctionId]);
+        } else {
+            prices[auctionId] = 0;
+            io.to(auctionId).emit('current-price', 0);
+        }
+
     }); 
 
     socket.on('disconnect', () => {
         console.log("Client disconnected.");
     });
 
-    socket.on('increase-price', () => {
-        itemPrice++;
-        socket.broadcast.emit('price-increased', itemPrice);
-        console.log("Item price increased to: " + itemPrice);
+    socket.on('increase-price', (auctionIdData) => {
+        //grab the auctionId
+        console.log("why is this getting.jldkjfals");
+        console.log(auctionIdData);
+        var auctionId = auctionIdData.auctionId;
+        prices[auctionId]++; 
+        console.log(prices[auctionId]);
+
+        socket.broadcast.to(auctionId).emit('price-increased', prices[auctionId]);
+        console.log("Item price increased to: " + prices[auctionId]);
     })
 }); 
 
